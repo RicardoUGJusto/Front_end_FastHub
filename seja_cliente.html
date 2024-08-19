@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FastHub Home</title>
+    <title>Seja Cliente FastHub</title>
     <link rel="stylesheet" href="./style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,15 +13,14 @@
     <div class="aba_navegacao">
         <img src="./logo.png" alt="Logo FastHub" class="logo">
         <div class="navegacao-links">
-            <!-- Link direto para a seção "Sobre Nós" -->
-            <button onclick="document.getElementById('sobre-nos-conteudo').scrollIntoView({behavior: 'smooth'})">Quem somos nós?</button>
-            <button onclick="window.location.href='seja_cliente.html'">Seja cliente</button>
+            
+            <button onclick="window.location.href='index.html'">Início</button>
             <span>OU</span>
             <button onclick="window.location.href='seja-prestador.html'">Seja prestador</button>
             <button class="login-btn" onclick="window.location.href='login.html'">Login</button>
         </div>
     </div>
-
+    <!--
     <div class="main-content">
         <div class="images-container">
             <img src="./Selecting team-bro.png" alt="Ilustração" class="illustration">
@@ -31,17 +30,12 @@
             <p class="slogan">CONECTANDO AOS MELHORES PRESTADORES DE SERVIÇO COM RAPIDEZ E CONFIANÇA!</p>
         </div>
     </div>
-
-    <!-- Seção Sobre Nós (visível por padrão) -->
-    <div id="sobre-nos-conteudo">
+    -->
+    <!-- Seção Sobre Nós (oculta inicialmente) -->
+    <div id="sobre-nos-conteudo" class="hidden">
         <h2>Sobre Nós</h2>
-        <p>Quem Somos
-            Na FastHub, entendemos que manter sua casa em perfeito estado pode ser um desafio. Por isso, criamos uma plataforma que conecta você, cliente, aos melhores profissionais de manutenção domiciliar. Nossa missão é tornar simples e eficiente o processo de encontrar especialistas qualificados para cuidar de suas necessidades, desde pequenos reparos até grandes reformas.
-            
-            Com uma rede de profissionais cadastrados e avaliados, garantimos que cada serviço seja realizado com excelência, segurança e transparência. Nós nos preocupamos em oferecer uma experiência prática e confiável, para que você tenha a tranquilidade de saber que sua casa está em boas mãos.
-            
-            Seja qual for a sua demanda, estamos aqui para ajudar a encontrar a solução ideal. Na FastHub, sua satisfação é o nosso compromisso.</p>
-        <button id="voltar-topo" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">Voltar ao topo</button>
+        <p>Aqui vai a explicação detalhada sobre a empresa. Inclua aqui todo o conteúdo que você deseja mostrar quando o botão 'Quem somos nós?' for clicado.</p>
+        <button id="voltar-topo">Voltar ao topo</button>
     </div>
 
     <!-- Incluindo o script JavaScript -->
