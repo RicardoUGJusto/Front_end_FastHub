@@ -1,0 +1,117 @@
+/* Adicione este estilo ao seu arquivo CSS */
+.hidden {
+    display: none;
+}
+
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+}
+
+.aba_navegacao {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #ffffff;
+}
+
+.aba_navegacao .logo {
+    height: 12vh;
+    width: 180px;
+}
+
+.navegacao-links {
+    display: flex;
+    align-items: center;
+}
+
+.navegacao-links button, .navegacao-links span {
+    background-color: #ffffff;
+    border: none;
+    font-size: 20px;
+    color: #494c4e;
+    font-weight: 600;
+    margin-right: 20px;
+    padding: 20px 30px;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom 0.3s;
+}
+
+.navegacao-links button:hover {
+    cursor: pointer;
+    border-bottom: 5px solid #e6006f;
+}
+
+.login-btn {
+    background-color: #FF0077;
+    color: #e6006f;
+    border-radius: 20px;
+    padding: 10px 20px;
+}
+
+.login-btn:hover {
+    background-color: #e6006f;
+    color: #ffffff;
+}
+
+.main-content {
+    display: flex;
+    justify-content: flex-start;
+    padding: 40px;
+    background-color: #ffffff;
+}
+
+.images-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.images-container img {
+    max-width: 85vh;
+    height: 60vh;
+}
+
+.images-container .text-image {
+    position: absolute;
+    top: 260px;
+    left: 300px;
+}
+
+.main_text {
+    color: #FF0077;
+    display: flex;
+    font-size: 45px;
+    justify-content: flex-start;
+    padding: 130px;
+    margin-left: 50vh;
+    background-color: #ffffff;
+    font-family: "Kanit", sans-serif;
+    font-weight: 600;
+}
+
+/* Estilo para o botão de voltar ao topo */
+#voltar-topo {
+    display: block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #FF0077;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#voltar-topo:hover {
+    background-color: #e6006f;
+}
