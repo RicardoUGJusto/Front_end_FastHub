@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Usuário</title>
+    <title>Gerenciamento de Serviços</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
@@ -212,106 +212,120 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="home.html">Voltar ao início</a>
+                    <a class="nav-link" href="home_adm.html">Voltar ao início</a>
                 </li>
             </ul>
         </div>
     </nav>
 
     <div class="form-container">
-        <h2>Realize o seu cadastro!</h2>
-        <form action="/submit_form" method="post">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="nome">Nome</label>
-                        <input type="text" class="form-control" id="nome" name="nome" required>
-                    </div>
+        <h2>Gerenciar Serviços</h2>
+        
+            <!-- Formulário para adicionar/editar serviços -->
+            <form id="serviceForm">
+                <div class="form-group">
+                    <label for="serviceName">Serviço</label>
+                    <input type="text" id="serviceName" class="form-control" required>
                 </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="sobrenome">Sobrenome</label>
-                        <input type="text" class="form-control" id="sobrenome" name="sobrenome" required>
-                    </div>
+                <div class="form-group">
+                    <label for="serviceDescription">Descrição</label>
+                    <input type="text" id="serviceDescription" class="form-control" required>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="cpf">CPF</label>
-                        <input type="text" class="form-control" id="cpf" name="cpf" required>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="telefone">Telefone / Celular</label>
-                        <input type="text" class="form-control" id="telefone" name="telefone" required>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="endereco">Endereço</label>
-                        <input type="text" class="form-control" id="endereco" name="endereco" required>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="cep">CEP</label>
-                        <input type="text" class="form-control" id="cep" name="cep" required>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="estado">Estado</label>
-                        <select class="form-control" id="estado" name="estado" required>
-                            <option value="">Selecione o Estado</option>
-                            <option value="AC">Acre</option>
-                            <option value="AL">Alagoas</option>
-                            <option value="AP">Amapá</option>
-                            <option value="AM">Amazonas</option>
-                            <option value="BA">Bahia</option>
-                            <option value="CE">Ceará</option>
-                            <option value="DF">Distrito Federal</option>
-                            <option value="ES">Espírito Santo</option>
-                            <option value="GO">Goiás</option>
-                            <option value="MA">Maranhão</option>
-                            <option value="MT">Mato Grosso</option>
-                            <option value="MS">Mato Grosso do Sul</option>
-                            <option value="MG">Minas Gerais</option>
-                            <option value="PA">Pará</option>
-                            <option value="PB">Paraíba</option>
-                            <option value="PR">Paraná</option>
-                            <option value="PE">Pernambuco</option>
-                            <option value="PI">Piauí</option>
-                            <option value="RJ">Rio de Janeiro</option>
-                            <option value="RN">Rio Grande do Norte</option>
-                            <option value="RS">Rio Grande do Sul</option>
-                            <option value="RO">Rondônia</option>
-                            <option value="RR">Roraima</option>
-                            <option value="SC">Santa Catarina</option>
-                            <option value="SP">São Paulo</option>
-                            <option value="SE">Sergipe</option>
-                            <option value="TO">Tocantins</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <button type="submit" class="btn-submit">Enviar</button>
-        </form>
+                <button type="submit" class="btn btn-submit">Salvar</button>
+                <button type="reset" class="btn btn-back">Cancelar</button>
+            </form>
+        
+            <!-- Lista de serviços cadastrados -->
+            <table class="table mt-4">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Serviço</th>
+                        <th scope="col">Descrição</th>
+                        <th scope="col">Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="serviceList">
+                    <!-- Serviços serão adicionados aqui -->
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Script para manipular o CRUD -->
+        <script>
+            let services = [];
+            let currentId = 1;
+            const serviceForm = document.getElementById('serviceForm');
+            const serviceList = document.getElementById('serviceList');
+        
+            // Função para renderizar a lista de serviços
+            function renderServiceList() {
+                serviceList.innerHTML = '';
+                services.forEach((service, index) => {
+                    const row = `
+                        <tr>
+                            <th scope="row">${service.id}</th>
+                            <td>${service.name}</td>
+                            <td>${service.description}</td>
+                            <td>
+                                <button class="btn btn-sm btn-primary" onclick="editService(${index})">Editar</button>
+                                <button class="btn btn-sm btn-danger" onclick="deleteService(${index})">Excluir</button>
+                            </td>
+                        </tr>
+                    `;
+                    serviceList.innerHTML += row;
+                });
+            }
+        
+            // Função para adicionar ou editar um serviço
+            serviceForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const serviceName = document.getElementById('serviceName').value;
+                const serviceDescription = document.getElementById('serviceDescription').value;
+        
+                if (serviceForm.dataset.editingIndex) {
+                    const index = serviceForm.dataset.editingIndex;
+                    services[index] = {
+                        id: services[index].id,
+                        name: serviceName,
+                        description: serviceDescription
+                    };
+                    delete serviceForm.dataset.editingIndex;
+                } else {
+                    services.push({
+                        id: currentId++,
+                        name: serviceName,
+                        description: serviceDescription
+                    });
+                }
+        
+                serviceForm.reset();
+                renderServiceList();
+            });
+        
+            // Função para editar um serviço
+            function editService(index) {
+                const service = services[index];
+                document.getElementById('serviceName').value = service.name;
+                document.getElementById('serviceDescription').value = service.description;
+                serviceForm.dataset.editingIndex = index;
+            }
+        
+            // Função para excluir um serviço
+            function deleteService(index) {
+                services.splice(index, 1);
+                renderServiceList();
+            }
+        
+            // Inicializa a lista de serviços
+            renderServiceList();
+        </script>
+        
+
     </div>
 
     <footer>
-        &copy; 2024 Cadastro de Usuário. Todos os direitos reservados.
+        &copy; 2024 FastHub. Todos os direitos reservados.
     </footer>
 
     <!-- Bootstrap JS and dependencies -->

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tela Home</title>
+    <title>FastHub</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="./style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,8 +16,8 @@
             <div class="col-12 d-flex justify-content-between align-items-center p-3">
                 <img src="./logo.png" alt="Logo FastHub" class="logo">
                 <div class="navegacao-links d-flex align-items-center">
-                    <button id="sobre-nos" class="btn btn-link" onclick="window.location.href='#';">Quem somos nós?</button>
-                    <button class="btn btn-link" onclick="window.location.href='form.html';">Seja cliente</button>
+                    <button onclick="document.getElementById('sobre-nos-conteudo').scrollIntoView({behavior: 'smooth'})">Quem somos nós?</button>
+                    <button class="btn btn-link" onclick="window.location.href='form_cliente.html';">Seja cliente</button>
                     <span class="mx-3">OU</span>
                     <button class="btn btn-link" onclick="window.location.href='form_prestador.html';">Seja prestador</button>
                     <button class="login-btn btn" onclick="window.location.href='login.html';">Login</button>
@@ -36,10 +36,15 @@
         </div>
 
         <!-- Seção Sobre Nós (oculta inicialmente) -->
-        <div id="sobre-nos-conteudo" class="hidden">
+        <div id="sobre-nos-conteudo">
             <h2>Sobre Nós</h2>
-            <p>Aqui vai a explicação detalhada sobre a empresa. Inclua aqui todo o conteúdo que você deseja mostrar quando o botão 'Quem somos nós?' for clicado.</p>
-            <button id="voltar-topo" class="btn btn-primary">Voltar ao topo</button>
+            <p>Quem Somos
+                Na FastHub, entendemos que manter sua casa em perfeito estado pode ser um desafio. Por isso, criamos uma plataforma que conecta você, cliente, aos melhores profissionais de manutenção domiciliar. Nossa missão é tornar simples e eficiente o processo de encontrar especialistas qualificados para cuidar de suas necessidades, desde pequenos reparos até grandes reformas.
+                
+                Com uma rede de profissionais cadastrados e avaliados, garantimos que cada serviço seja realizado com excelência, segurança e transparência. Nós nos preocupamos em oferecer uma experiência prática e confiável, para que você tenha a tranquilidade de saber que sua casa está em boas mãos.
+                
+                Seja qual for a sua demanda, estamos aqui para ajudar a encontrar a solução ideal. Na FastHub, sua satisfação é o nosso compromisso.</p>
+            <!--<button id="voltar-topo" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">Voltar ao topo</button> -->
         </div>
     </div>
 
